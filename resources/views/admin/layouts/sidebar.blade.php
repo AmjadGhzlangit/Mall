@@ -54,6 +54,23 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+                   
+                    <span class="link-title">Sellers</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="emails">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('sellers.index') }}" class="nav-link">Seller list</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sellers.create') }}" class="nav-link">Add Seller</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
