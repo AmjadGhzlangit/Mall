@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
+            <div class="col-lg-7 col-xl-10 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
@@ -57,6 +57,19 @@
                                                       @csrf
                                                   <input type="submit" class="btn btn-success" value="Edit">
                                                 </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('categories.edit', $category->id) }}" method="GET">
+                                                      @csrf
+                                                  <input type="submit" class="btn btn-success" value="Edit">
+                                                </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('categories.edit', $category->id) }}" method="GET">
+                                                      @csrf
+                                                  <input type="submit" class="btn btn-success" value="Edit">
+                                                </form>
+                                                </td>
                                             </tr>
                                         @empty
 
