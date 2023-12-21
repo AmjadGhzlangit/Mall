@@ -1,4 +1,5 @@
-@extends('admin.admin_dashboard')
+@extends('admin.layouts.app_cashier')
+
 
 @section('content')
 <div class="page-content">
@@ -25,8 +26,7 @@
         <h6 class="text-end mb-5 pb-4"># INV-</h6>
         <p class="text-end mb-1">Balance Due</p>
         <h4 class="text-end fw-normal">$ 72,420.00</h4>
-        <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Invoice Date :</span> 25rd Jan 2022</h6>
-        <h6 class="text-end fw-normal"><span class="text-muted">Due Date :</span> 12th Jul 2022</h6>
+        {{-- <h6 class="mb-0 mt-3 text-end fw-normal mb-2"><span class="text-muted">Invoice Date :</span> {{ $orders->created_at }}</h6> --}}
       </div>
     </div>
     <div class="container-fluid mt-5 d-flex justify-content-center w-100">
@@ -35,41 +35,30 @@
             <thead>
               <tr>
                   <th>#</th>
-                  <th>Description</th>
-                  <th class="text-end">Quantity</th>
-                  <th class="text-end">Unit cost</th>
-                  <th class="text-end">Total</th>
+                  <th class="text-center">Product</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Unit cost</th>
+                  <th class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
-              <tr class="text-end">
-                <td class="text-start">1</td>
-                <td class="text-start">PSD to html conversion</td>
-                <td>02</td>
-                <td>$55</td>
-                <td>$110</td>
+              @php
+    $total = 0; // Initialize total variable
+    @endphp
+                @foreach ( $orders as $order)
+                <tr class="text-center">
+                <td class="text-center">{{ $order->id }}</td>
+                <td>{{ $order->product->name }}</td>
+                <td>{{ $order->quantity }}</td>
+                <td>{{ $order->product->price }}</td>
+                <td>{{ $order->price }}$</td>
               </tr>
-              <tr class="text-end">
-                <td class="text-start">2</td>
-                <td class="text-start">Package design</td>
-                <td>08</td>
-                <td>$34</td>
-                <td>$272</td>
-              </tr>
-              <tr class="text-end">
-                <td class="text-start">3</td>
-                <td class="text-start">Html template development</td>
-                <td>03</td>
-                <td>$500</td>
-                <td>$1500</td>
-              </tr>
-              <tr class="text-end">
-                <td class="text-start">4</td>
-                <td class="text-start">Redesign</td>
-                <td>01</td>
-                <td>$30</td>
-                <td>$30</td>
-              </tr>
+              @php
+              $total += $order->price; // Accumulate the price to the total
+           @endphp
+                @endforeach
+                
+              
             </tbody>
           </table>
         </div>
@@ -80,25 +69,9 @@
             <div class="table-responsive">
               <table class="table">
                   <tbody>
-                    <tr>
-                      <td>Sub Total</td>
-                      <td class="text-end">$ 14,900.00</td>
-                    </tr>
-                    <tr>
-                      <td>TAX (12%)</td>
-                      <td class="text-end">$ 1,788.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-bold-800">Total</td>
-                      <td class="text-bold-800 text-end"> $ 16,688.00</td>
-                    </tr>
-                    <tr>
-                      <td>Payment Made</td>
-                      <td class="text-danger text-end">(-) $ 4,688.00</td>
-                    </tr>
                     <tr class="bg-dark">
-                      <td class="text-bold-800">Balance Due</td>
-                      <td class="text-bold-800 text-end">$ 12,000.00</td>
+                      <td class="text-bold-800">Total</td>
+                      <td class="text-bold-800 text-end">$ {{ number_format($total, 2) }}</td>
                     </tr>
                   </tbody>
               </table>
@@ -107,9 +80,16 @@
       </div>
     </div>
     <div class="container-fluid w-100">
-      <a href="javascript:;" class="btn btn-primary float-end mt-4 ms-2"><i data-feather="send" class="me-3 icon-md"></i>Send Invoice</a>
-      <a href="javascript:;" class="btn btn-outline-primary float-end mt-4"><i data-feather="printer" class="me-2 icon-md"></i>Print</a>
-    </div>
+      <form action="{{ route('store.order' , $order->id) }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-primary float-end mt-4 ms-2">
+              <i data-feather="send" class="me-3 icon-md"></i>Order
+          </button>
+      </form>
+
+       
+
+  </div>
   </div>
 </div>
         </div>

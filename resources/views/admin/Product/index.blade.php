@@ -8,22 +8,6 @@
         <h4 class="mb-3 mb-md-0">Products</h4>
         
     </div>
-    <div class="d-flex align-items-center flex-wrap text-nowrap">
-        <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
-            <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
-                    data-feather="calendar" class="text-primary"></i></span>
-            <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
-                data-input>
-        </div>
-        <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-            <i class="btn-icon-prepend" data-feather="printer"></i>
-            Print
-        </button>
-        <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-            <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-            Download Report
-        </button>
-    </div>
 </div>
 <div class="row">
     <div class="col-lg-7 col-xl-12 grid-margin stretch-card">
@@ -48,22 +32,22 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->category->name }}</td>
+                                        <td>{{ optional($product->category)->name }}</td>
                                         <td>{{ $product->description }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         <td><img src="{{ asset('storage/'.$product->image) }}" alt="" width="30px" height="30px"></td>
                                         <td>
-                                        <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                        <input type="submit" class="btn btn-danger" value="Delete Product">
                                         </form>
                                     </td>
                                         <td>
-                                            <form action="{{ route('products.edit', $product->id) }}" method="GET">
+                                            <form action="{{ route('admin.products.edit', $product->id) }}" method="GET">
                                                 @csrf
-                                            <input type="submit" class="btn btn-success" value="Edit">
+                                            <input type="submit" class="btn btn-success" value="Edit Product">
                                         </form>
                                     </tr>
                                 @empty

@@ -53,5 +53,8 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    
+    public function isAdmin(): bool
+    {
+        return $this->is_admin; // Assuming 'is_admin' is a boolean column
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\OrderItem;
 use App\Models\Seller;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

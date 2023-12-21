@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderItem;
 use App\Models\Seller;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

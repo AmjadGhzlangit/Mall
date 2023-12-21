@@ -1,4 +1,4 @@
-@extends('admin.admin_dashboard')
+@extends('admin.layouts.app_cashier')
 
 @section('content')
     <div class="page-content">

@@ -1,4 +1,4 @@
-@extends('admin.admin_dashboard')
+@extends('admin.layouts.app_cashier')
 
 @section('content')
 <div class="page-content">
@@ -8,6 +8,11 @@
         <div class="card-body">
             <h3 class="text-center mb-3 mt-4">Categories</h3>
             <div class="container">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-md-2 stretch-card grid-margin grid-margin-md-0">
                            {{-- Categories Cards --}}

@@ -1,28 +1,17 @@
 @extends('admin.admin_dashboard')
 
 @section('content')
-<div class="page-content">
 
+<div class="page-content">
+    @if (session('success'))
+    <div class="alert alert-danger">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
     <div>
         <h4 class="mb-3 mb-md-0">Sellers</h4>
         
-    </div>
-    <div class="d-flex align-items-center flex-wrap text-nowrap">
-        <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
-            <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
-                    data-feather="calendar" class="text-primary"></i></span>
-            <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
-                data-input>
-        </div>
-        <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-            <i class="btn-icon-prepend" data-feather="printer"></i>
-            Print
-        </button>
-        <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-            <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-            Download Report
-        </button>
     </div>
 </div>
 <div class="row">
@@ -57,17 +46,22 @@
                                     <td>{{ $order->created_at }}</td>   
                                     <!-- End Display Order Information -->
                                     <td>
-                                        <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
+                                        <form action="{{ route('admin.orders.destroy', $order->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <input type="submit" class="btn btn-danger" value="Delete">
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{ route('orders.edit', $order->id) }}" method="GET">
+                                        <form action="{{ route('admin.orders.show', $order->id) }}" method="GET">
                                             @csrf
-                                            <input type="submit" class="btn btn-success" value="Edit">
+                                            <input type="submit" class="btn btn-info" value="Show">
                                         </form>
+                                    </td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a href="{{ route('generate.invoice', ['orderId' => $order->id]) }}" class="btn btn-primary" target="_blank">Generate PDF</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty

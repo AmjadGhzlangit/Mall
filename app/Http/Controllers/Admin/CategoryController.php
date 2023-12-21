@@ -10,7 +10,7 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * منجيب كل شي من الداتا بيز على الصفحة 
      */
     public function index()
     {
@@ -28,25 +28,18 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * تخرين الحقل في الداتا بيز
      */
     public function store(StoreCategoryRequest $request)
     {
         $categories = $request->validated();
         Category::create($categories);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * رجعلي الصفحة يلي بدي عدل عن طريقها
      */
     public function edit(Category $category)
     {
@@ -62,16 +55,16 @@ class CategoryController extends Controller
         $category_data = $request->validated();
         $category->update($category_data);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * الحذف من الداتا بيز 
      */
     public function destroy(Category $category)
     {
         $category->delete();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }
