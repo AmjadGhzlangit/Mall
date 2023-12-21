@@ -32,6 +32,10 @@
                             </a>
                         </li>
                         <li class="dropdown-item py-2">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit">Logout</button>
+                            </form>
                             <a href="javascript:;" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="log-out"></i>
                                 <span>Log Out</span>

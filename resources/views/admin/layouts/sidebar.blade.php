@@ -29,10 +29,10 @@
                 <div class="collapse" id="emails">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('categories.index') }}" class="nav-link">Category list</a>
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link">Category list</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('categories.create') }}" class="nav-link">Add Category</a>
+                            <a href="{{ route('admin.categories.create') }}" class="nav-link">Add Category</a>
                         </li>
                     </ul>
                 </div>
@@ -46,10 +46,10 @@
                 <div class="collapse" id="emails">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('products.index') }}" class="nav-link">Product list</a>
+                            <a href="{{ route('admin.products.index') }}" class="nav-link">Product list</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('products.create') }}" class="nav-link">Add Product</a>
+                            <a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a>
                         </li>
                     </ul>
                 </div>
@@ -63,10 +63,27 @@
                 <div class="collapse" id="emails">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('sellers.index') }}" class="nav-link">Seller list</a>
+                            <a href="{{ route('admin.sellers.index') }}" class="nav-link">Seller list</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('sellers.create') }}" class="nav-link">Add Seller</a>
+                            <a href="{{ route('admin.sellers.create') }}" class="nav-link">Add Seller</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+                   
+                    <span class="link-title">Orders</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="emails">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.orders.index') }}" class="nav-link">Orders list</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.orders.create') }}" class="nav-link">Add Orders</a>
                         </li>
                     </ul>
                 </div>

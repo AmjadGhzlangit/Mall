@@ -5,7 +5,7 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
-                <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
+                <h4 class="mb-3 mb-md-0">Orders</h4>
             </div>
             
         </div>
@@ -13,9 +13,9 @@
             <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add Category</h6>
+                        <h6 class="card-title">Add Order</h6>
 
-                        <form class="forms-sample" action="{{ route('admin.categories.store') }}" method="POST">
+                        <form class="forms-sample" action="{{ route('admin.ordres.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Category Name</label>
@@ -25,7 +25,7 @@
                                 <label for="description" class="form-label">Category Description</label>
                                 <input type="text" class="form-control" name="description" placeholder="Enter category description">
                             </div>
-                            <button type="submit" class="btn btn-primary me-2">Save</button>
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
                         </form>
 
                     </div>

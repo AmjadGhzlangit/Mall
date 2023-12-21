@@ -14,11 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create([
+            'name'=> 'admin',
+            'email'=> 'admin@admin.com',
+            'password'=> 'password',
+            'is_admin'=> true,
+        ]);
 
         User::factory(7)->create();
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(SellerSeeder::class);
+        $this->call(OrderSeeder::class);
     }
 }

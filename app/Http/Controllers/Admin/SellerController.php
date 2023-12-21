@@ -39,15 +39,8 @@ class SellerController extends Controller
             'status' => $validatedData['status'],
         ]);
 
-        return redirect()->route('sellers.index');
+        return redirect()->route('admin.sellers.index');
     }
-
-    
-    public function show(Seller $seller)
-    {
-        //
-    }
-
     
     public function edit(Seller $seller)
     {
@@ -69,13 +62,13 @@ class SellerController extends Controller
             'status' => $validatedData['status'],
         ]);
     
-        return redirect()->route('sellers.index');
+        return redirect()->route('admin.sellers.index');
     }
 
     
     public function destroy(Seller $seller)
     {
         $seller->delete();
-        return redirect()->route('sellers.index');
+        return redirect()->route('admin.sellers.index');
     }
 }
